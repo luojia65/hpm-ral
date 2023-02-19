@@ -40,5 +40,5 @@ members = [
     "examples/hpm6750evkmini",
     "examples/spi-lcd",
     "raltool",
-    "bootheader",
+    "hpm-rom-rt",
 ]

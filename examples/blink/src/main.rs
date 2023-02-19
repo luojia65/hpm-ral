@@ -1,18 +1,18 @@
 #![no_std]
 #![no_main]
 
-extern crate hpm_bootheader;
 extern crate panic_halt;
 
+extern crate hpm_rom_rt;
 use hpm_ral as ral;
-use riscv_rt::entry;
 
 use hpm6750evkmini as bsp;
 
 use bsp::gpio::Gpio;
 
-#[entry]
-fn main() -> ! {
+#[export_name = "main"] // todo: hpm-rom-rt hpm_rom_rt::entry
+#[link_section = ".init.rust"]
+extern "C" fn main() -> ! {
     let sysctl = unsafe { ral::sysctl::SYSCTL::instance() };
     let gpio = unsafe { Gpio::new(ral::gpio::GPIO0::instance(), ral::ioc::IOC0::instance()) };
 
