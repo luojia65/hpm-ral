@@ -1,13 +1,15 @@
 #![no_std]
 #![no_main]
 
+extern crate hpm_bootheader;
 extern crate panic_halt;
+
+use hpm_ral as ral;
+use riscv_rt::entry;
 
 use hpm6750evkmini as bsp;
 
 use bsp::gpio::Gpio;
-use hpm_ral as ral;
-use riscv_rt::entry;
 
 #[entry]
 fn main() -> ! {
